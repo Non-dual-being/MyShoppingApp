@@ -2,7 +2,8 @@
   "name": "myshoppingapp",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://Non-dual-being.github.io/react_deploy_gh",
+  "homepage": "https://Non-dual-being.github.io/MyShoppingApp/"
+,
   "type": "module",
   "scripts": {
     "dev": "vite",
