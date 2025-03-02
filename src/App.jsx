@@ -89,7 +89,7 @@ const App = () => {
     const result = await apiRequest(API_URL, postOptions);
 
     //there wil be a result if a error message showed up in the catch block
-    if (result) {setFetchError(result)};
+    //if (result) {setFetchError(result)}; om de local te laten werken
   }
 
   useEffect(() => {
@@ -101,8 +101,14 @@ const App = () => {
         console.log(listItems);
         setItems(listItems);
         setFetchError(null);
+        localStorage.setItem('shoppinglist', JSON.stringify(listItems)); // ✅ Save to LocalStorage
       } catch (e) {
-        setFetchError(e.message);
+        const storedItems = localStorage.getItem('shoppinglist');
+        if (storedItems) {
+          setItems(JSON.parse(storedItems));
+        } else {
+          setItems([]); // Geen data, zet een lege lijst
+      }
 
       } finally {
         setIsloading(false);
